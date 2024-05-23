@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "net.lstwo.pipe_bomb_in_the_mail.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ItemEntityMixin"
+  ],
+  "client": [],
+  "server": [],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

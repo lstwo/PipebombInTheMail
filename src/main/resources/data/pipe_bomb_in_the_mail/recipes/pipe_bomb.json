@@ -1,0 +1,26 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "boat",
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b" : {
+      "item": "minecraft:redstone"
+    },
+    "c" : {
+      "item": "minecraft:gold_ingot"
+    },
+    "d" : {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "result": {
+    "item": "pipe_bomb_in_the_mail:pipe_bomb"
+  }
+}

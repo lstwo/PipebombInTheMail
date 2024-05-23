@@ -1,23 +1,28 @@
 {
   "schemaVersion": 1,
-  "id": "pipebomb_in_the_mail",
+  "id": "pipe_bomb_in_the_mail",
   "version": "${version}",
-
-  "name": "Pipebomb In The Mail",
+  "name": "Pipe Bomb In The Mail",
   "description": "",
   "authors": [],
   "contact": {},
-
   "license": "MIT",
-  "icon": "assets/pipebomb_in_the_mail/icon.png",
-
+  "icon": "assets/pipe_bomb_in_the_mail/icon.png",
   "environment": "*",
-  "entrypoints": {},
-
-
+  "entrypoints": {
+    "client": [
+      "net.lstwo.pipe_bomb_in_the_mail.client.PipeBombInTheMailClient"
+    ],
+    "main": [
+      "net.lstwo.pipe_bomb_in_the_mail.PipeBombInTheMail"
+    ]
+  },
+  "mixins": [
+    "mixin.pipebomb_in_the_mail.json"
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
-        "fabric": "*",
+    "fabric": "*",
     "minecraft": "${minecraft_version}"
   }
 }
