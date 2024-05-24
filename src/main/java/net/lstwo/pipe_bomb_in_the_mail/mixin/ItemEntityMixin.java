@@ -20,10 +20,12 @@ public abstract class ItemEntityMixin {
         ItemEntity itemEntity = (ItemEntity) (Object) this;
         ItemStack stack = itemEntity.getStack();
 
-        if(!itemEntity.world.isClient) {
-            if(this.pickupDelay == 0 && (itemEntity.getOwner() == null || itemEntity.getOwner().equals(player.getUuid())))
-                if (stack.getItem() instanceof InventoryPipeBombItem pipebombItem)
+        if(!itemEntity.getWorld().isClient) {
+            if(this.pickupDelay == 0 && (itemEntity.getOwner() == null || itemEntity.getOwner().getUuid().equals(player.getUuid()))) {
+                if (stack.getItem() instanceof InventoryPipeBombItem pipebombItem) {
                     pipebombItem.doExplosion(stack, itemEntity.getWorld(), player);
+                }
+            }
         }
     }
 }

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key": {
+    "a": {
+      "item": "pipe_bomb_in_the_mail:inventory_pipe_bomb"
+    },
+    "b" : {
+      "item": "minecraft:tnt"
+    }
+  },
+  "pattern": [
+    " b ",
+    "bab",
+    " b "
+  ],
+  "result": {
+    "item": "pipe_bomb_in_the_mail:better_inventory_pipe_bomb"
+  }
+}

@@ -1,5 +1,7 @@
 package net.lstwo.pipe_bomb_in_the_mail.item;
 
+import net.fabricmc.fabric.api.item.v1.FabricItem;
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;
@@ -7,14 +9,20 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
+import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import net.minecraft.world.explosion.Explosion;
 
-public class InventoryPipeBombItem extends Item {
+public class InventoryPipeBombItem extends Item implements FabricItem {
+
+    @Override
+    public Rarity getRarity(ItemStack stack) {
+        return Rarity.UNCOMMON;
+    }
 
     public InventoryPipeBombItem() {
-        super(new Item.Settings().group(ItemGroup.MISC));
+        super(new FabricItemSettings().maxCount(1));
     }
 
     @Override
@@ -33,7 +41,7 @@ public class InventoryPipeBombItem extends Item {
             if (stack.getNbt().getBoolean("activated")) {
                 if (!world.isClient) {
                     stack.decrement(1);
-                    world.createExplosion(null, entity.getX(), entity.getY(), entity.getZ(), 4.0F, Explosion.DestructionType.DESTROY);
+                    world.createExplosion(null, entity.getX(), entity.getY(), entity.getZ(), 4.0F, World.ExplosionSourceType.MOB);
                 }
             }
         }
