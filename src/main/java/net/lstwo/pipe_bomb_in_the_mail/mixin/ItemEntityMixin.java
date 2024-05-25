@@ -25,11 +25,11 @@ public abstract class ItemEntityMixin {
         if (stack.getItem() instanceof InventoryPipeBombItem pipeBomb) {
             if (!itemEntity.getWorld().isClient) {
 
-                if(stack.getItem() instanceof InstantInventoryPipeBombItem) {
+                if(stack.getItem().getClass() == InstantInventoryPipeBombItem.class) {
                     if(stack.getNbt() != null && stack.getNbt().getInt("explosionDelay") > 0) stack.getNbt().putInt("explosionDelay", stack.getNbt().getInt("explosionDelay") - 1);
                     else stack.getOrCreateNbt().putInt("explosionDelay", 10);
                 }
-                if (this.pickupDelay == 0 || (stack.getItem() instanceof InstantInventoryPipeBombItem && stack.getNbt().getInt("explosionDelay") == 0)) {
+                if (this.pickupDelay == 0 || (stack.getItem().getClass() == InstantInventoryPipeBombItem.class && stack.getNbt().getInt("explosionDelay") == 0)) {
                     pipeBomb.doItemExplosion(stack, itemEntity.getWorld(), player);
                 }
             }
