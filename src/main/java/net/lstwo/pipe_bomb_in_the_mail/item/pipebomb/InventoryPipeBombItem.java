@@ -1,20 +1,15 @@
-package net.lstwo.pipe_bomb_in_the_mail.item;
+package net.lstwo.pipe_bomb_in_the_mail.item.pipebomb;
 
-import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.minecraft.world.explosion.Explosion;
 
-public class InventoryPipeBombItem extends Item implements FabricItem {
+public class InventoryPipeBombItem extends PipeBombItem {
 
     @Override
     public Rarity getRarity(ItemStack stack) {
@@ -31,20 +26,14 @@ public class InventoryPipeBombItem extends Item implements FabricItem {
         if (player.isSneaking()) {
             itemStack.getOrCreateNbt().putBoolean("activated", true);
             player.sendMessage(Text.of("Pipe Bomb Activated!"), true);
-        }
-        return TypedActionResult.success(itemStack);
+            return TypedActionResult.success(itemStack);
+        } else
+            return TypedActionResult.fail(itemStack);
     }
 
-    public void doExplosion(ItemStack stack, World world, Entity entity) {
-        if (stack.hasNbt()) {
-            assert stack.getNbt() != null;
-            if (stack.getNbt().getBoolean("activated")) {
-                if (!world.isClient) {
-                    stack.decrement(1);
-                    world.createExplosion(null, entity.getX(), entity.getY(), entity.getZ(), 4.0F, World.ExplosionSourceType.MOB);
-                }
-            }
-        }
+    @Override
+    public float getExplosionPower() {
+        return 4;
     }
 
     @Override

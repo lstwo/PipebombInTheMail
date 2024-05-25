@@ -8,18 +8,18 @@
       "item": "minecraft:redstone"
     },
     "c" : {
-      "item": "minecraft:tripwire_hook"
+      "item": "minecraft:gold_ingot"
     },
     "d" : {
-      "item": "pipe_bomb_in_the_mail:pipe_bomb"
+      "item": "minecraft:tnt"
     }
   },
   "pattern": [
-    " c ",
-    "bdb",
-    " a "
+    "aba",
+    "cdc",
+    "aba"
   ],
   "result": {
-    "item": "pipe_bomb_in_the_mail:inventory_pipe_bomb"
+    "item": "pipe_bomb_in_the_mail:pipe_bomb"
   }
 }

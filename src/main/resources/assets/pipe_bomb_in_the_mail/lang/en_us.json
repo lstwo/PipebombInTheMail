@@ -1,4 +1,7 @@
 {
-  "item.pipe_bomb_in_the_mail.inventory_pipe_bomb": "Pipe Bomb for the Mail",
-  "item.pipe_bomb_in_the_mail.better_inventory_pipe_bomb": "Better Pipe Bomb for the Mail"
+  "item.pipe_bomb_in_the_mail.inventory_pipe_bomb": "Pickup Pipe Bomb",
+  "item.pipe_bomb_in_the_mail.better_inventory_pipe_bomb": "Better Pickup Pipe Bomb",
+  "item.pipe_bomb_in_the_mail.instant_inventory_pipe_bomb": "Instant Pickup Pipe Bomb",
+
+  "item.pipe_bomb_in_the_mail.pipe_bomb": "Pipe Bomb for the Mail"
 }
