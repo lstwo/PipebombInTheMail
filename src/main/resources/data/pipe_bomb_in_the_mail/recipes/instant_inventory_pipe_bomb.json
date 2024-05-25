@@ -1,14 +1,11 @@
 {
   "type": "minecraft:crafting_shaped",
   "key": {
-    "a": {
-      "item": "minecraft:iron_ingot"
-    },
     "b" : {
       "item": "minecraft:redstone"
     },
     "c" : {
-      "item": "minecraft:tripwire_hook"
+      "item": "minecraft:observer"
     },
     "d" : {
       "item": "pipe_bomb_in_the_mail:pipe_bomb"
@@ -17,7 +14,7 @@
   "pattern": [
     " c ",
     "bdb",
-    " a "
+    " b "
   ],
   "result": {
     "item": "pipe_bomb_in_the_mail:inventory_pipe_bomb"

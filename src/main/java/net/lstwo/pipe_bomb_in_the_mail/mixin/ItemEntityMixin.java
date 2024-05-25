@@ -1,9 +1,11 @@
 package net.lstwo.pipe_bomb_in_the_mail.mixin;
 
-import net.lstwo.pipe_bomb_in_the_mail.item.InventoryPipeBombItem;
+import net.lstwo.pipe_bomb_in_the_mail.item.pipebomb.InstantInventoryPipeBombItem;
+import net.lstwo.pipe_bomb_in_the_mail.item.pipebomb.InventoryPipeBombItem;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NbtCompound;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -20,10 +22,15 @@ public abstract class ItemEntityMixin {
         ItemEntity itemEntity = (ItemEntity) (Object) this;
         ItemStack stack = itemEntity.getStack();
 
-        if(!itemEntity.getWorld().isClient) {
-            if(this.pickupDelay == 0 && (itemEntity.getOwner() == null || itemEntity.getOwner().getUuid().equals(player.getUuid()))) {
-                if (stack.getItem() instanceof InventoryPipeBombItem pipebombItem) {
-                    pipebombItem.doExplosion(stack, itemEntity.getWorld(), player);
+        if (stack.getItem() instanceof InventoryPipeBombItem pipeBomb) {
+            if (!itemEntity.getWorld().isClient) {
+
+                if(stack.getItem() instanceof InstantInventoryPipeBombItem) {
+                    if(stack.getNbt() != null && stack.getNbt().getInt("explosionDelay") > 0) stack.getNbt().putInt("explosionDelay", stack.getNbt().getInt("explosionDelay") - 1);
+                    else stack.getOrCreateNbt().putInt("explosionDelay", 10);
+                }
+                if (this.pickupDelay == 0 || (stack.getItem() instanceof InstantInventoryPipeBombItem && stack.getNbt().getInt("explosionDelay") == 0)) {
+                    pipeBomb.doItemExplosion(stack, itemEntity.getWorld(), player);
                 }
             }
         }
