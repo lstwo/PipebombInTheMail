@@ -1,6 +1,8 @@
 package net.lstwo.pipe_bomb_in_the_mail;
 
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleFactory;
+import net.fabricmc.fabric.api.gamerule.v1.GameRuleRegistry;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.lstwo.pipe_bomb_in_the_mail.entity.ThrownPipeBombEntity;
 import net.lstwo.pipe_bomb_in_the_mail.item.pipebomb.*;
@@ -12,6 +14,7 @@ import net.minecraft.item.ItemGroups;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Identifier;
+import net.minecraft.world.GameRules;
 
 public class PipeBombInTheMail implements ModInitializer {
     public static final String MODID = "pipe_bomb_in_the_mail";
@@ -20,6 +23,9 @@ public class PipeBombInTheMail implements ModInitializer {
     public static final Item inventoryPipeBomb = new InventoryPipeBombItem();
     public static final Item betterInventoryPipeBomb = new BetterInventoryPipeBombItem();
     public static final Item instantInventoryPipeBomb = new InstantInventoryPipeBombItem();
+
+    public static final GameRules.Key<GameRules.BooleanRule> DO_PROPERTY_DAMAGE = GameRuleRegistry.register("doPropertyDamage", GameRules.Category.MISC,
+            GameRuleFactory.createBooleanRule(true));
 
     @Override
     public void onInitialize() {
@@ -36,3 +42,4 @@ public class PipeBombInTheMail implements ModInitializer {
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(content -> content.add(instantInventoryPipeBomb));
     }
 }
+
