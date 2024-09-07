@@ -8,7 +8,7 @@
       "item": "minecraft:observer"
     },
     "d" : {
-      "item": "pipe_bomb_in_the_mail:pipe_bomb"
+      "item": "pipe_bomb_in_the_mail:inventory_pipe_bomb"
     }
   },
   "pattern": [
